@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:spell_bee/controller.dart';
 import 'package:spell_bee/drop.dart';
 //import 'package:flutter/widgets.dart';
 import 'all_words.dart';
@@ -30,6 +32,9 @@ class _HomePageState extends State<HomePage> {
     // print(_words);
     final s = _word.characters.toList()..shuffle();
     _word = s.join(); //convert it back to the string
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp){
+      Provider.of<Controller>(context, listen: false).setUp(total: _word.length);
+    });
     super.initState();
   }
 

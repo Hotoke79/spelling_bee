@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:spell_bee/controller.dart';
 
 class Drag extends StatefulWidget {
   const Drag({required this.letter,
@@ -32,6 +34,7 @@ class _DragState extends State<Drag> {
               setState(() {
                 
               });
+              Provider.of<Controller>(context, listen: false).icrementLetters();
             }
           },
           childWhenDragging: SizedBox(),
